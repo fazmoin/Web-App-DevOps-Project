@@ -1,12 +1,3 @@
-
-
-resource "azurerm_virtual_network" "aks_vnet" {
-  name                = "aks-vnet"
-  resource_group_name = azurerm_resource_group.aks_rg.name
-  location            = azurerm_resource_group.aks_rg.location
-  address_space       = azurerm_virtual_network.aks_vnet
-}
-
 resource "azurerm_subnet" "control_plane_subnet" {
   name                 = "control-plane-subnet"
   resource_group_name  = azurerm_resource_group.aks_rg.name
