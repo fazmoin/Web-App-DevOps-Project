@@ -60,3 +60,80 @@ To run the application, you simply need to run the `app.py` script in this repos
 ## License
 
 This project is licensed under the MIT License. For more details, refer to the [LICENSE](LICENSE) file.
+
+# Aks Terraform
+
+# AKS Networking Terraform Configuration
+
+This Terraform configuration defines the infrastructure needed to provision networking resources for an Azure Kubernetes Service (AKS) cluster. It creates essential networking components such as a Virtual Network (VNet), subnets for control plane and worker nodes, and a Network Security Group (NSG) for security rule enforcement.
+
+## Prerequisites
+
+Before using this Terraform configuration, ensure you have the following prerequisites:
+
+1. An Azure subscription.
+2. Terraform installed on your local machine. You can download it from [here](https://www.terraform.io/downloads.html).
+3. Azure CLI installed on your local machine.
+4. Access to Azure with the necessary permissions to create networking resources.
+
+## Usage
+
+Follow the steps below to use this Terraform configuration:
+
+1. Clone this repository to your local machine:
+
+    ```bash
+    git clone <repository_url>
+    ```
+
+2. Navigate to the directory containing the Terraform configuration files:
+
+    ```bash
+    cd aks-networking-terraform
+    ```
+
+3. Initialize Terraform:
+
+    ```bash
+    terraform init
+    ```
+
+4. Modify the `terraform.tfvars` file to provide values for the required variables such as `resource_group_name`, `location`, and `vnet_address_space`.
+
+5. Review and customize the `main.tf` file if necessary to match your specific networking requirements.
+
+6. Run Terraform plan to preview the changes:
+
+    ```bash
+    terraform plan
+    ```
+
+7. If the plan looks good, apply the Terraform configuration to provision the networking resources:
+
+    ```bash
+    terraform apply
+    ```
+
+8. After the resources are provisioned successfully, Terraform will output the IDs and names of the created resources. You can use these outputs to configure other modules or resources in your infrastructure.
+
+9. To clean up the resources, you can run:
+
+    ```bash
+    terraform destroy
+    ```
+
+## Outputs
+
+The Terraform configuration provides the following outputs:
+
+- `vnet_id`: The ID of the created Virtual Network (VNet).
+- `control_plane_subnet_id`: The ID of the control plane subnet within the VNet.
+- `worker_node_subnet_id`: The ID of the worker node subnet within the VNet.
+- `networking_resource_group_name`: The name of the Azure Resource Group where the networking resources were provisioned.
+- `aks_nsg_id`: The ID of the created Network Security Group (NSG).
+
+You can use these outputs to configure the AKS cluster module or any other modules requiring networking resources within the same Azure environment.
+
+## License
+
+This Terraform configuration is licensed under the [MIT License](LICENSE).
