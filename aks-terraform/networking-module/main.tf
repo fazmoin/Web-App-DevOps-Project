@@ -38,7 +38,7 @@ resource "azurerm_network_security_rule" "kube_apiserver_rule" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_address_prefixes     = ["${var.public_ip_address}/32"]
+  source_address_prefixes     = ["${data.http.get_public_ip}/32"]
   destination_port_range      = "443"
 }
 
@@ -50,6 +50,6 @@ resource "azurerm_network_security_rule" "ssh_rule" {
   direction                   = "Inbound"
   access                      = "Allow"
   protocol                    = "Tcp"
-  source_address_prefixes     = ["${var.public_ip_address}/32"]
+  source_address_prefixes     = ["${data.http.get_public_ip}/32"]
   destination_port_range      = "22"
 }
